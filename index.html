@@ -1,8 +1,143 @@
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+---
+# Front matter so GitHub Pages/Jekyll processes this file
+title: Home
+---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Basic inline styling so it works without extra CSS files -->
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      color: #222;
+      background-color: #f7f7f7;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid #e2e2e2;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0.25rem 0;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .summary-box {
+      background-color: #f5f5f5;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .summary-box strong {
+      font-weight: 600;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .post-item {
+      border-bottom: 1px solid #eee;
+      padding: 1.25rem 0;
+    }
+
+    .post-item:last-child {
+      border-bottom: none;
+    }
+
+    .post-title {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .post-title a {
+      text-decoration: none;
+      color: #0066cc;
+    }
+
+    .post-title a:hover {
+      text-decoration: underline;
+    }
+
+    .post-meta {
+      margin: 0.35rem 0 0.75rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .post-excerpt {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .read-more {
+      font-size: 0.9rem;
+    }
+
+    .read-more a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .read-more a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #999;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header>
+      <h1>{{ site.title | default: "Documents" }}</h1>
+      {% if site.description %}
+        <p>{{ site.description
